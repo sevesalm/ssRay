@@ -3,7 +3,7 @@ DEBUG = -Wall -g
 MAKEFLAGS = -j2
 
 # Let's use all .cc files as targets
-objects = $(patsubst %.cc, %.o, $(wildcard *.cc))
+objects = $(patsubst src/%.cc, src/%.o, $(wildcard src/*.cc))
 
 all: ssRay
 debug: CXXFLAGS = $(DEBUG)
@@ -16,8 +16,8 @@ $(filter-out main.o, $(objects)):  %.o: %.h
 
 .PHONY : clean
 clean :
-	$(RM) *.o *.s
+	$(RM) src/*.o src/*.s
 .PHONY : rebuild
 rebuild: 
-	$(RM) *.o && make
+	$(RM) src/*.o && make
 
